@@ -37,7 +37,7 @@ $transformedData = array_map(function ($item) {
 $jsonData = json_encode($transformedData, JSON_PRETTY_PRINT);
 
 // Specify the path to save the JSON file
-$jsonFilePath = '/path/to/your/directory/dynamicContent.json'; // Adjust the path as necessary
+$jsonFilePath = 'https://targetai.dk/wp-content/uploads/2024/08/test.json'; // Adjust the path as necessary
 
 // Save to file
 file_put_contents($jsonFilePath, $jsonData);
