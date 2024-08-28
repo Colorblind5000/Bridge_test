@@ -1,25 +1,25 @@
 import requests
 import json
 
-# API konfiguration
+# API configuration
 api_url = "https://dsa-prd-sharedservices-api.azure-api.net/marselisborg/apsis-jobs"
 headers = {
     'Ocp-Apim-Subscription-Key': '1155a9ca7acf4979842f2e7cd699f163',
     'Content-Type': 'application/json'
 }
 
-# Hent data fra API'en
+# Fetch data from the API
 response = requests.get(api_url, headers=headers)
 
-# Tjek om forespørgslen var succesfuld
+# Check if the request was successful
 if response.status_code == 200:
     data = response.json()
 
-    # Gem dataene som en JSON-fil
+    # Save the data as a JSON file
     file_path = "jobs.json"
     with open(file_path, 'w') as json_file:
-        json.dump(data, json_file)
+        json.dump(data, json_file, indent=4)
 
-    print("JSON-filen er blevet oprettet.")
+    print("JSON file created successfully.")
 else:
-    print(f"API forespørgsel fejlede med status kode: {response.status_code}")
+    print(f"API request failed with status code: {response.status_code}")
