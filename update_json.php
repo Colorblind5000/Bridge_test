@@ -23,13 +23,15 @@ curl_close($ch);
 // Decode JSON response
 $data = json_decode($response, true);
 
-// Process and transform the data as needed
+// Assuming the API returns an array of job entries, adjust as needed
 $transformedData = array_map(function ($item) {
     return [
-        'id' => $item['id'],  // Adapt these keys based on actual API response structure
-        'title' => $item['title'],
-        'description' => $item['description']
-        // Add other fields as required
+        'occupationName' => $item['occupationName'], // Adjust key names based on actual API response
+        'companyJobId' => $item['companyJobId'],
+        'filterOption' => $item['filterOption'], // Adjust as needed if API includes these fields
+        'comment' => $item['comment'],
+        'id' => $item['id'],
+        'presentation' => $item['presentation'] // Adjust handling of HTML content if necessary
     ];
 }, $data);
 
@@ -37,7 +39,7 @@ $transformedData = array_map(function ($item) {
 $jsonData = json_encode($transformedData, JSON_PRETTY_PRINT);
 
 // Specify the path to save the JSON file
-$jsonFilePath = 'https://targetai.dk/wp-content/uploads/2024/08/test.json'; // Adjust the path as necessary
+$jsonFilePath = '/path/to/your/directory/dynamicContent.json'; // Change this to your actual path
 
 // Save to file
 file_put_contents($jsonFilePath, $jsonData);
